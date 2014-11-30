@@ -53,19 +53,19 @@
         <operation name="getFlights">
             <soap:operation/>
             <input name="input1">
-                <soap:body use="literal"/>
+                <soap:body use="literal" namespace="http://lameduck.group8.ws.dtu"/>
             </input>
             <output name="output1">
-                <soap:body use="literal"/>
+                <soap:body use="literal" namespace="http://lameduck.group8.ws.dtu"/>
             </output>
         </operation>
         <operation name="bookFlight">
             <soap:operation/>
             <input name="input2">
-                <soap:body use="literal"/>
+                <soap:body use="literal" namespace="http://lameduck.group8.ws.dtu"/>
             </input>
             <output name="output2">
-                <soap:body use="literal"/>
+                <soap:body use="literal" namespace="http://lameduck.group8.ws.dtu"/>
             </output>
             <fault name="fault2">
                 <soap:fault name="fault2" use="literal"/>
@@ -74,10 +74,10 @@
         <operation name="cancelFlight">
             <soap:operation/>
             <input name="input3">
-                <soap:body use="literal"/>
+                <soap:body use="literal" namespace="http://lameduck.group8.ws.dtu"/>
             </input>
             <output name="output3">
-                <soap:body use="literal"/>
+                <soap:body use="literal" namespace="http://lameduck.group8.ws.dtu"/>
             </output>
             <fault name="fault3">
                 <soap:fault name="fault3" use="literal"/>
