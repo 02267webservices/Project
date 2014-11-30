@@ -26,14 +26,27 @@ catalog.xml
 .DS_Store?
 
 # Custom Local Env Paths
-/NiceViewService/nbproject/private/
-/NiceViewClient/nbproject/private/
-/NiceViewClient/build/
-/LameDuckService/nbproject/private/
-/LameDuckClient/nbproject/private/
-/TravelGoodBPELService/nbproject/private/
-/TravelGoodBPELApp/nbproject/private/
-/webroot/nbproject/private/
+/HotelReservationServicesSOAP/build/
+/HotelReservationServicesSOAP/dist/
+/HotelReservationServicesSOAP/nbproject/private/
 
-/LameDuckClient2/nbproject/private/
-/TravelGoodBPEL2/nbproject/private/
+/LameDuckClient/build/
+/LameDuckClient/dist/
+/LameDuckClient/nbproject/private/
+
+/LameDuckService/nbproject/private/
+/LameDuckService/build/
+
+/NiceViewClientFinal/nbproject/private/
+/NiceViewClientFinal/build/
+/NiceViewClientFinal/dist/
+
+/TravelGoodBPEL/nbproject/private/
+
+/TravelGoodRESTClient/nbproject/private/
+/TravelGoodRESTClient/build/
+
+/TravelGoodRESTService/build/
+/TravelGoodRESTService/nbproject/private/
+
+/webroot/nbproject/private/
