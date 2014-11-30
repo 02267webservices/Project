@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<process
+    name="travelGoodBPEL_v2"
+    targetNamespace="http://enterprise.netbeans.org/bpel/TravelGoodBPEL_v2/travelGoodBPEL_v2"
+    xmlns:tns="http://enterprise.netbeans.org/bpel/TravelGoodBPEL_v2/travelGoodBPEL_v2"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:sxt="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Trace" 
+    xmlns:sxed="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Editor2"
+    xmlns:sxat="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Attachment"
+    xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling">
+    <import namespace="http://enterprise.netbeans.org/bpel/HotelReservationWrapper" location="HotelReservationWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://HotelReservationServices" location="file:/C:/Users/MortenH/Documents/HotelReservationServicesSOAP/src/java/ws/HotelReservation.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/LameDuckWSDLWrapper" location="LameDuckWSDLWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://lameduck.group8.ws.dtu" location="file:/C:/Users/MortenH/Documents/LameDuckService/src/java/dtu/ws/group8/lameduck/LameDuckWSDL.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/HotelReservationServiceWrapper" location="HotelReservationServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://HotelReservationServices" location="http://localhost:8080/HotelReservationServicesSOAP/HotelReservationService?wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/LameDuckServiceWrapper" location="LameDuckServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://lameduck.group8.ws.dtu" location="http://localhost:8080/LameDuckService/LameDuckService?wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://HotelReservationServices" location="localhost_8080/HotelReservationServicesSOAP/HotelReservationService.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://j2ee.netbeans.org/wsdl/TravelGoodBPEL/src/TravelGood" location="TravelGood.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <partnerLinks>
+        <partnerLink name="TravelGoodPartnerLink" xmlns:tns="http://j2ee.netbeans.org/wsdl/TravelGoodBPEL/src/TravelGood" partnerLinkType="tns:TravelGood" myRole="TravelGoodPortTypeRole"/>
+        <partnerLink name="LameDuckPartnerLink" xmlns:tns="http://enterprise.netbeans.org/bpel/LameDuckServiceWrapper" partnerLinkType="tns:LameDuckWSDLLinkType" partnerRole="LameDuckWSDLRole"/>
+        <partnerLink name="HotelReservationPArtnerLink" xmlns:tns="http://enterprise.netbeans.org/bpel/HotelReservationServiceWrapper" partnerLinkType="tns:HotelReservationServicesLinkType" partnerRole="HotelReservationServicesRole"/>
+    </partnerLinks>
+    <variables>
+        <variable name="GetFlightsIn" xmlns:tns="http://lameduck.group8.ws.dtu" messageType="tns:getFlightsRequest"/>
+        <variable name="BookHotelIn" xmlns:tns="http://HotelReservationServices" messageType="tns:bookHotelRequest"/>
+        <variable name="TravelGoodCreateIntineraryIn1" xmlns:tns="http://j2ee.netbeans.org/wsdl/TravelGoodBPEL/src/TravelGood" messageType="tns:TravelGoodCreateIntineraryRequest"/>
+        <variable name="TravelGoodCreateIntineraryIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/TravelGoodBPEL/src/TravelGood" messageType="tns:TravelGoodCreateIntineraryRequest"/>
+    </variables>
+    <sequence name="Main">
+        <receive name="CreateItinerary" createInstance="yes" partnerLink="TravelGoodPartnerLink" operation="TravelGoodCreateIntinerary" xmlns:tns="http://j2ee.netbeans.org/wsdl/TravelGoodBPEL/src/TravelGood" portType="tns:TravelGoodPortType" variable="TravelGoodCreateIntineraryIn1"/>
+        <if name="If1">
+            <sequence name="Sequence1">
+                <invoke name="BookHotel" partnerLink="HotelReservationPArtnerLink" operation="bookHotel" xmlns:tns="http://HotelReservationServices" portType="tns:HotelReservationServices" inputVariable="BookHotelIn"/>
+                <pick name="Pick1">
+                    <onMessage/>
+                </pick>
+            </sequence>
+            <else>
+                <invoke name="BookFlight" partnerLink="LameDuckPartnerLink" operation="getFlights" xmlns:tns="http://lameduck.group8.ws.dtu" portType="tns:LameDuckWSDLPortType" inputVariable="GetFlightsIn"/>
+            </else>
+        </if>
+    </sequence>
+</process>
