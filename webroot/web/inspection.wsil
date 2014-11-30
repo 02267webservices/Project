@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<inspection xmlns="http://schemas.xmlsoap.org/ws/2001/10/inspection/">
+    <service>
+        <name>TravelGood</name>
+        <abstract>TravelGood provides an easy way for customers to create, plan and finally book an itinerary containing hotels and flights around the world.</abstract>
+        <description referencedNamespace="http://schemas.xmlsoap.org/wsdl/" location="http://localhost:8080/TravelGood?wsdl"/>
+    </service>
+    <link referencedNamespace="http://schemas.xmlsoap.org/ws/2001/10/inspection/" location="http://localhost:8080/NiceView.wsil"/>
+    <link referencedNamespace="http://schemas.xmlsoap.org/ws/2001/10/inspection/" location="http://localhost:8080/LameDuck.wsil"/>
+</inspection>
