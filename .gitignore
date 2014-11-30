@@ -43,10 +43,11 @@ catalog.xml
 
 /TravelGoodBPEL/nbproject/private/
 
-/TravelGoodRESTClient/nbproject/private/
-/TravelGoodRESTClient/build/
+/RESTClient/nbproject/private/
+/RESTClient/build/
 
-/TravelGoodRESTService/build/
-/TravelGoodRESTService/nbproject/private/
+/RESTWebService/build/
+/RESTWebService/nbproject/private/
+/RESTWebService/dist/
 
 /webroot/nbproject/private/
