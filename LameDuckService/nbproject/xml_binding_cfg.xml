@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<schemas xmlns='http://xml.netbeans.org/schema/JAXBWizConfig' destdir='build/generated-sources/jaxb' projectName='LameDuckService' version='1.0'>
+	<schema type='-xmlschema' package='' name='LameDuckBindings'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='src/conf/xml-resources/jaxb/LameDuckBindings/LameDuckSchema.xsd' origLocation='src/java/dtu/ws/group8/lameduck/LameDuckSchema.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+	<schema type='-xmlschema' package='dtu.ws.group8.lameduck' name='LameDuckBinding'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='src/conf/xml-resources/jaxb/LameDuckBinding/LameDuckSchema.xsd' origLocation='src/java/dtu/ws/group8/lameduck/types/LameDuckSchema.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
+</schemas>
