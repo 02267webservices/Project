@@ -3,5 +3,5 @@
     <system systemId="file:/Users/khannoori/NetBeansProjects/HotelReservationServicesSOAP/src/java/HotelReservationServices.wsdl" uri="src/conf/xml-resources/web-services/HotelReservationsService/wsdl/HotelReservationServices.wsdl"/>
     <system systemId="file:/Users/khannoori/NetBeansProjects/HotelReservationServicesSOAP/src/java/ws/HotelReservation.wsdl" uri="src/conf/xml-resources/web-services/NewWebServiceFromWSDL/wsdl/HotelReservation.wsdl"/>
     <system systemId="http://fastmoney.imm.dtu.dk:8080/BankService?wsdl" uri="wsdl/fastmoney.imm.dtu.dk_8080/BankService.wsdl"/>
-    <system systemId="http://fastmoney.imm.dtu.dk:8080/BankService?xsd=1" uri="wsdl/fastmoney.imm.dtu.dk_8080/BankService.xsd_1"/>
+    <system systemId="http://fastmoney.imm.dtu.dk:8080/BankService?xsd=1" uri="wsdl/fastmoney.imm.dtu.dk_8080/BankService.xsd_1.xsd"/>
 </catalog>
