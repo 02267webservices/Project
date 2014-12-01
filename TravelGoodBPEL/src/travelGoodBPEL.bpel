@@ -9,8 +9,49 @@
     xmlns:sxt="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Trace" 
     xmlns:sxed="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Editor2"
     xmlns:sxat="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Attachment"
-    xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling">
-
-   <sequence>
-   </sequence>
+    xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling" xmlns:ns0="dtu.ws.group8.travelgood">
+    <import namespace="dtu.ws.group8.travelgood" location="TravelGoodWSDL.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/LameDuckServiceWrapper" location="LameDuckServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://lameduck.group8.ws.dtu" location="http://localhost:8080/LameDuckService/LameDuckService?wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <partnerLinks>
+        <partnerLink name="LameDuckPartnerLink" xmlns:tns="http://enterprise.netbeans.org/bpel/LameDuckServiceWrapper" partnerLinkType="tns:LameDuckWSDLLinkType" partnerRole="LameDuckWSDLRole"/>
+        <partnerLink name="PartnerLink1" xmlns:tns="dtu.ws.group8.travelgood" partnerLinkType="tns:TravelGoodWSDL" myRole="TravelGoodWSDLPortTypeRole"/>
+    </partnerLinks>
+    <variables>
+        <variable name="currentItinerary" type="ns0:itineraryType"/>
+        <variable name="processTerminated" type="xs:boolean"/>
+        <variable name="CreateItineraryOperationOut" messageType="ns0:createItineraryOperationResponse"/>
+        <variable name="CreateItineraryOperationIn" messageType="ns0:createItineraryOperationRequest"/>
+        <variable name="planningDone" type="xs:boolean"/>
+    </variables>
+    <correlationSets>
+        <correlationSet name="CustomerItineraryIdsCorrelation" properties="ns0:customerId ns0:itineraryId"/>
+    </correlationSets>
+    <sequence>
+        <documentation>createItinerary process: gets the customer and itinerary ids and return status string</documentation>
+        <receive name="createItineraryReceive" createInstance="yes" partnerLink="PartnerLink1" operation="createItineraryOperation" portType="ns0:TravelGoodWSDLPortType" variable="CreateItineraryOperationIn">
+            <correlations>
+                <correlation set="CustomerItineraryIdsCorrelation" initiate="yes"/>
+            </correlations>
+        </receive>
+        <assign name="Assign1">
+            <copy>
+                <from>false()</from>
+                <to variable="processTerminated"/>
+            </copy>
+            <copy>
+                <from>concat('Itinerary created with itinearay ID: ', $CreateItineraryOperationIn.itineraryId)</from>
+                <to variable="CreateItineraryOperationOut" part="status"/>
+            </copy>
+            <copy>
+                <from>false()</from>
+                <to variable="planningDone"/>
+            </copy>
+            <copy>
+                <from>'2100-01-01T00:00:0.0+01:00'</from>
+                <to>$currentItinerary/firstItineraryDate</to>
+            </copy>
+        </assign>
+        <reply name="createItineraryReply" partnerLink="PartnerLink1" operation="createItineraryOperation" portType="ns0:TravelGoodWSDLPortType" variable="CreateItineraryOperationOut"/>
+    </sequence>
 </process>
