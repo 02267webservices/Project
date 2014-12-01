@@ -51,3 +51,5 @@ catalog.xml
 /RESTWebService/dist/
 
 /webroot/nbproject/private/
+/RestClient/nbproject/private/
+/RestWebService/nbproject/private/

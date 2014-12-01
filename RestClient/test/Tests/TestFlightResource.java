@@ -27,7 +27,7 @@ import ws.dtu.rest.data.MyBean;
 
 public class TestFlightResource {
     static final String ITINERARY_URI = "http://localhost:8080/RestWebService/webresources/itineraries";
-    //static final String FLIGHTS_URI = "http://localhost:8080/RestWebService/webresources/flights";
+    static final String FLIGHTS_URI = "http://localhost:8080/RestWebService/webresources/flights";
     static //final String HOTEL_URI = "http://localhost:8080/RestWebService/webresources/itinerary";
     private ArrayList<String> itine = new ArrayList();
     
@@ -41,7 +41,7 @@ public class TestFlightResource {
      Client client = Client.create();
 
       //Get list of flights   *****************
-   
+   /*
      List<FlightInfoType> flightsInfo = getFlights(client, "Copenhagen", "Berlin", "2015-01-01");
          
           if (!flightsInfo.isEmpty()){
@@ -54,6 +54,7 @@ public class TestFlightResource {
                            flightsInfo.get(i).getFlightInfo().getStartAirport()+ "\n");
             }       
      }
+         */ 
      //***********************************************************
           
      //**************ADD TO ITINERARY**************************     
@@ -331,7 +332,7 @@ public class TestFlightResource {
   }
  
   public HotelsType getHotels(Client client) {
-      WebResource r = client.resource(ITINERARY_URI);   
+      WebResource r = client.resource(FLIGHTS_URI);   
       HotelsType res = r.path("hotels").get(new GenericType<HotelsType>(){});
       
       

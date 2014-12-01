@@ -58,7 +58,7 @@ public class ItineraryRessource {
          } 
          Itinerary.getFligtList().put(number, "UNCONFIRMED"); //This one wont be booked at all
 
-      }
+      } 
        return ""+result;
    }
    

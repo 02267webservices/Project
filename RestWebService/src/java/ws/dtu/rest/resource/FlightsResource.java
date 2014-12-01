@@ -18,7 +18,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @Path("flights")
 public class FlightsResource {
     
-  /*  
+  
 
     @GET
     @Produces(MediaType.TEXT_XML)
@@ -41,7 +41,7 @@ public class FlightsResource {
         return result;
     }
 
-*/
+
     
     
     

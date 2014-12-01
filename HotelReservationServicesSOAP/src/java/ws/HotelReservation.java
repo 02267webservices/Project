@@ -22,7 +22,7 @@ public class HotelReservation {
     // -------- NiceView --------
 
     private final Object lock = new Object();
-    private final HashMap<Integer, Booking> bookings = new HashMap<Integer, Booking>();
+    private static final HashMap<Integer, Booking> bookings = new HashMap<Integer, Booking>();
     private int next = 1;
     
     public HotelsType getHotels(String city, XMLGregorianCalendar arrival, XMLGregorianCalendar departure) {
@@ -67,21 +67,66 @@ public class HotelReservation {
 
     public boolean bookHotel(int bookingNumber, CreditCardType creditCard) throws BookHotelFault {
         
+         HotelsType hotels = new HotelsType();
+        hotels.setName("NiceView");
+        
+       
+        
+        HotelType hotel = new HotelType();
+        hotel.setName("Hotel that always succeed");
+        hotel.setAddress("Copenhagen");
+        hotel.setBookingNumber(next++);
+        hotel.setPriceForWholeStay(1000);
+        hotel.setPaymentGuarantee(false);
+        hotels.getHotels().add(hotel);
+        bookings.put(hotel.getBookingNumber(), new Booking(hotel));
+
+        hotel = new HotelType();
+        hotel.setName("Hotel that requires payment guarantee and can fail occasionally");
+        hotel.setAddress("Odense");
+        hotel.setBookingNumber(next++);
+        hotel.setPriceForWholeStay(2000);
+        hotel.setPaymentGuarantee(true);
+        hotels.getHotels().add(hotel);
+        bookings.put(hotel.getBookingNumber(), new Booking(hotel));
+
+        hotel = new HotelType();
+        hotel.setName("Hotel that always fails");
+        hotel.setAddress("Krakow");
+        hotel.setBookingNumber(next++);
+        hotel.setPriceForWholeStay(3000);
+        hotel.setPaymentGuarantee(false);
+        hotels.getHotels().add(hotel);
+        bookings.put(hotel.getBookingNumber(), new Booking(hotel));
+        
+        System.out.print("-------------------------------------------------------------------------");
+        System.out.print(creditCard.getExpirationMonth());
+        System.out.print(creditCard.getExpirationYear());
+        System.out.print(creditCard.getName());
+        System.out.print(creditCard.getNumber());
+
+        System.out.print("hashmap lenght" + bookings.size()); 
+        System.out.print("__________________________________________________________");
+
+        Booking booking = bookings.get(bookingNumber);
+
+        
         if (!bookings.containsKey(bookingNumber)) {
             BookHotelFaultType fault = new BookHotelFaultType();
             fault.setBookingNumber(bookingNumber);
             fault.setCreditCardInfo(creditCard);
-            throw new BookHotelFault("Booking was not found.", fault);
+           
+           throw new BookHotelFault("Booking was not found.", fault);
         }
 
-        Booking booking = bookings.get(bookingNumber);
+        
         /*
         if (booking.getBooked()) {
             BookHotelFaultType fault = new BookHotelFaultType();
             fault.setBookingNumber(bookingNumber);
             fault.setCreditCardInfo(creditCard);
             throw new BookHotelFault("Booking is already booked.", fault);
-        }
+        } 
         */
 
         if (booking.getHotel().getName().equalsIgnoreCase("Hotel that always succeed")) {
@@ -137,10 +182,14 @@ public class HotelReservation {
 
     public boolean cancelHotel(int bookingNumber) throws CancelHotelFault {
         
-            
+           System.out.print("hashmap lenght" + bookings.size()); 
+        System.out.print("__________________________________________________________");
+
+    
         if (!bookings.containsKey(bookingNumber)) {
             CancelHotelFaultType fault = new CancelHotelFaultType();
             fault.setBookingNumber(bookingNumber);
+           // return true;
             throw new CancelHotelFault("Booking was not found.", fault);	
         }
 
@@ -224,4 +273,4 @@ public class HotelReservation {
         return service.getBankPort().refundCreditCard(group, creditCardInfo, amount, account);
         
     }   
-}
+} 
