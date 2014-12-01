@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author gravr
+ * @author emilhein
  */
 public class LameDuckTest {
     

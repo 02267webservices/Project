@@ -51,6 +51,5 @@ catalog.xml
 /RESTWebService/dist/
 
 /webroot/nbproject/private/
-/TravelGoodBPELApp/nbproject/private/
-/TravelGoodBPELApp/src/jbiServiceUnits/
-/TravelGoodBPELClient/nbproject/private/
+/RestClient/nbproject/private/
+/RestWebService/nbproject/private/

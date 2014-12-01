@@ -38,7 +38,6 @@ import javax.xml.bind.annotation.XmlType;
     "flightInfo"
 })
 @XmlRootElement ( name = "flightInfoType")
-
 public class FlightInfoType {
 
     @XmlElement(required = true)

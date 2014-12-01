@@ -33,7 +33,6 @@ import javax.xml.bind.annotation.XmlType;
     "flightInformation"
 })
 @XmlRootElement ( name = "flightInfoListType")
-
 public class FlightInfoListType {
 
     protected List<FlightInfoType> flightInformation;

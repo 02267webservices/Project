@@ -18,7 +18,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @Path("flights")
 public class FlightsResource {
     
-  /*  
+  
 
     @GET
     @Produces(MediaType.TEXT_XML)
@@ -41,14 +41,7 @@ public class FlightsResource {
         return result;
     }
 
-*/
-    
-    
-    
-    
- 
 
-   
 
     private static FlightInfoListType getFlights(dtu.ws.group8.lameduck.types.GetFlightRequestType input) {
         dtu.ws.group8.lameduck.LameDuckService service = new dtu.ws.group8.lameduck.LameDuckService();
