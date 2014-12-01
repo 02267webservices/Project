@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://HotelReservationServices" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="HotelReservationServices" targetNamespace="http://HotelReservationServices">
-<wsdl:import namespace="http://HotelReservationServices" location="HotelReservation.wsdl"/>
-<wsdl:service name="HotelReservationServicesService">
-<wsdl:port name="HotelReservationServicesPort" binding="tns:HotelReservationServicesBinding">
-<soap:address location="REPLACE_WITH_ACTUAL_URL"/>
-</wsdl:port>
-</wsdl:service>
-</definitions>
