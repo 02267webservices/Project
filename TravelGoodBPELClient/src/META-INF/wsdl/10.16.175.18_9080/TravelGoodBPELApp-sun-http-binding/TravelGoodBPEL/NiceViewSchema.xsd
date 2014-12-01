@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://types.niceview.group8.ws.dtu"
+    xmlns:tns="http://types.niceview.group8.ws.dtu"
+    elementFormDefault="qualified">
+<xsd:complexType name="CreditCardType">
+    <xsd:sequence>
+        <xsd:element name="name" type="xsd:string"></xsd:element>
+        <xsd:element name="number" type="xsd:string"></xsd:element>
+        <xsd:element name="expirationMonth" type="xsd:int"></xsd:element>
+        <xsd:element name="expirationYear" type="xsd:int"></xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="HotelType">
+    <xsd:sequence>
+        <xsd:element name="name" type="xsd:string"></xsd:element>
+        <xsd:element name="address" type="xsd:string"></xsd:element>
+        <xsd:element name="bookingNumber" type="xsd:int"></xsd:element>
+        <xsd:element name="priceForWholeStay" type="xsd:int"></xsd:element>
+        <xsd:element name="paymentGuarantee" type="xsd:boolean"></xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="BookHotelFaultType">
+    <xsd:sequence>
+        <xsd:element name="bookingNumber" type="xsd:int"></xsd:element>
+        <xsd:element name="creditCardInfo" type="tns:CreditCardType"></xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="CancelHotelFaultType">
+    <xsd:sequence>
+        <xsd:element name="bookingNumber" type="xsd:int"></xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="HotelsType">
+    <xsd:sequence>
+        <xsd:element name="name" type="xsd:string"></xsd:element>
+        <xsd:element name="hotels" type="tns:HotelType" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+    </xsd:sequence>
+</xsd:complexType>
+<xsd:element name="creditCardElement" type="tns:CreditCardType"></xsd:element>
+<xsd:element name="hotelElement" type="tns:HotelType"></xsd:element>
+<xsd:element name="bookHotelFaultElement" type="tns:BookHotelFaultType"></xsd:element>
+<xsd:element name="cancelHotelFaultElement" type="tns:CancelHotelFaultType"></xsd:element>
+</xsd:schema>

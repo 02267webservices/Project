@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:9080/TravelGoodWSDLService/TravelGoodWSDLPort?wsdl" uri="wsdl/localhost_9080/TravelGoodWSDLService/TravelGoodWSDLPort.wsdl"/>
+    <system systemId="http://localhost:8080/LameDuckService/LameDuckService?xsd=1" uri="wsdl/localhost_8080/LameDuckService/LameDuckService.xsd_1.xsd"/>
+    <system systemId="http://10.16.175.18:9080/TravelGoodBPELApp-sun-http-binding/TravelGoodBPEL/NiceViewSchema.xsd" uri="wsdl/10.16.175.18_9080/TravelGoodBPELApp-sun-http-binding/TravelGoodBPEL/NiceViewSchema.xsd"/>
+    <system systemId="http://fastmoney.imm.dtu.dk:8080/BankService?xsd=1" uri="wsdl/fastmoney.imm.dtu.dk_8080/BankService.xsd_1.xsd"/>
+</catalog>
