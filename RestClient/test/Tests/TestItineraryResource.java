@@ -32,12 +32,14 @@ public class TestItineraryResource {
   
 
     
-
+/*
      @Test //WORKS
      public void testP1(){
          
      Client client = Client.create();
-
+     
+   
+     
       //Get list of flights   *****************
    
      List<FlightInfoType> flightsInfo = getFlights(client, "Copenhagen", "Berlin", "2015-01-01");
@@ -94,7 +96,7 @@ public class TestItineraryResource {
          
      }  
      
-     /*
+   
      @Test //WORKS
      public void testP2(){
          
@@ -128,8 +130,7 @@ public class TestItineraryResource {
          
               
      }
-     */
-     /*
+    
      @Test 
      public void testP2b(){
          Client client = Client.create();
@@ -171,7 +172,7 @@ public class TestItineraryResource {
           
      }
     
-     /*
+     
      @Test //WORKS
      public void testC1(){
          Client client = Client.create();
@@ -215,14 +216,15 @@ public class TestItineraryResource {
          
      }
      
-     
+     */
      @Test 
      public void testC2(){
          Client client = Client.create();
 
-         
+
          addFlightsToItinerary(client,"ABC1234");
-         addFlightsToItinerary(client,"ABC4321");
+         addFlightsToItinerary(client,"GHI912");
+
          addhotelsToItinerary(client,"2");
 
          
@@ -259,7 +261,7 @@ public class TestItineraryResource {
      }
      
     
-     */
+     
      
   public  MyBean getItinerary(Client client) {
         WebResource r = client.resource(ITINERARY_URI); 
@@ -377,7 +379,7 @@ public class TestItineraryResource {
         queryParams.add("number", param5);
 
       String ans = r.path("hotel").queryParams(queryParams).put(String.class);
-     System.out.println("The booking of hotel "+number+" was: "+ ans);
+        //  System.out.println("The booking of hotel "+number+" was: "+ ans);
       return ans;
    }
 
@@ -385,7 +387,7 @@ public class TestItineraryResource {
       WebResource r = client.resource(ITINERARY_URI);
       
       String cancel = r.path("flight").queryParam("bookingnumber",number).delete(String.class);
-      System.out.println("cancelling of booking number"+ number + "was succesfull: " +cancel);
+     // System.out.println("cancelling of booking number"+ number + "was succesfull: " +cancel);
          
       return cancel;
   }
@@ -400,7 +402,7 @@ public class TestItineraryResource {
       WebResource r = client.resource(ITINERARY_URI);
       
       String cancel = r.path("hotel").queryParam("bookingnumber",number).delete(String.class);
-      System.out.println("True cancelling of booking number "+ number + " was: " +cancel);
+      //System.out.println("True cancelling of booking number "+ number + " was: " +cancel);
          
       return cancel;
   }

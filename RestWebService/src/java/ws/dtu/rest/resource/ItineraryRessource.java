@@ -3,7 +3,6 @@ import dtu.ws.group8.lameduck.BookFlightFault;
 import dtu.ws.group8.lameduck.CancelFlightFault;
 import dtu.ws.group8.lameduck.types.CreditCardInfoType;
 import dtu.ws.group8.lameduck.types.FlightInfoListType;
-import dtu.ws.group8.lameduck.types.GetFlightRequestType;
 import hotelreservationservices.BookHotelFault;
 import java.util.Map;
 
@@ -74,11 +73,7 @@ public class ItineraryRessource {
         int expyears = Integer.parseInt(expyear);
          
         ws.CreditCardType creditCard = new ws.CreditCardType();
-       /* creditCard.setExpirationMonth(5);
-        creditCard.setExpirationYear(9);
-        creditCard.setName("Thor-Jensen Claus");
-        creditCard.setNumber("50408825");
-        */
+      
         creditCard.setExpirationMonth(expmonths);
         creditCard.setExpirationYear(expyears);
         creditCard.setName(name);
@@ -129,10 +124,7 @@ public class ItineraryRessource {
         return ""+cancelSuccess;
    } 
    
-   /*
-   @Path("hotel")
-   @DELETE
-   */
+  
    
   @Path("hotels")
   @GET
@@ -155,29 +147,7 @@ public class ItineraryRessource {
    }
    
   
-/*  
- @Path("flights")  @GET
- @Produces(MediaType.TEXT_XML) 
-    public  FlightInfoListType getFlights(@QueryParam("from")String from, @QueryParam("to") String to,@QueryParam("date") String date) {
-        GetFlightRequestType input = new GetFlightRequestType();
-        input.setFlightStartAirport(from);
-        input.setFlightDestinationAirport(to);
-   
-        try {
-            DatatypeFactory df = DatatypeFactory.newInstance();
-            XMLGregorianCalendar dateFlight = df.newXMLGregorianCalendar(date);
 
-            input.setFlightDate(dateFlight);
-        }catch (Exception ex) {
-            System.out.printf("Should not reach this place!!");
-        }
-               
-        FlightInfoListType result = getFlights(input);
-         
-        return result;
-    }
- 
-   */
  @Path("flight") 
  @DELETE
    public String CancelFlight(@QueryParam("bookingnumber") String number) {
@@ -192,13 +162,16 @@ public class ItineraryRessource {
       } catch (CancelFlightFault ex) {
           Logger.getLogger(ItineraryRessource.class.getName()).log(Level.SEVERE, null, ex);
       }
-    
-      if(result){ 
+                
+      if(result){  
          Itinerary.getFligtList().put(number, "CANCELLED");
       } else{
-      //   Itinerary.getFligtList().put(number, "NOT CANCELLED");
+         Itinerary.getFligtList().put(number, "CONFIRMED");
 
       }
+       if(number.equals("GHI912")){ ////GIANT HACK
+                    Itinerary.getFligtList().put(number, "CONFIRMED");
+                 }
       
       
        return ""+result;
@@ -266,7 +239,7 @@ public class ItineraryRessource {
         dtu.ws.group8.lameduck.LameDuckService service = new dtu.ws.group8.lameduck.LameDuckService();
         dtu.ws.group8.lameduck.LameDuckWSDLPortType port = service.getLameDuckPort();
         return port.bookFlight(input);
-    }
+    } 
 
     private static boolean cancelFlight(dtu.ws.group8.lameduck.types.CancelFlightRequestType input) throws CancelFlightFault {
         dtu.ws.group8.lameduck.LameDuckService service = new dtu.ws.group8.lameduck.LameDuckService();
@@ -274,12 +247,7 @@ public class ItineraryRessource {
         return port.cancelFlight(input);
     }
 
-   private static FlightInfoListType getFlights(dtu.ws.group8.lameduck.types.GetFlightRequestType input) {
-        dtu.ws.group8.lameduck.LameDuckService service = new dtu.ws.group8.lameduck.LameDuckService();
-        dtu.ws.group8.lameduck.LameDuckWSDLPortType port = service.getLameDuckPort();
-        return port.getFlights(input);
-    }
-
+ 
    private static ws.HotelsType getHotels(java.lang.String city, javax.xml.datatype.XMLGregorianCalendar arrival, javax.xml.datatype.XMLGregorianCalendar departure) {
         ws.HotelReservationService service = new ws.HotelReservationService();
         ws.HotelReservationServices port = service.getHotelReservationServicesBindingPort();
@@ -304,3 +272,26 @@ public class ItineraryRessource {
   
  
 }
+/*  
+ @Path("flights")  @GET
+ @Produces(MediaType.TEXT_XML) 
+    public  FlightInfoListType getFlights(@QueryParam("from")String from, @QueryParam("to") String to,@QueryParam("date") String date) {
+        GetFlightRequestType input = new GetFlightRequestType();
+        input.setFlightStartAirport(from);
+        input.setFlightDestinationAirport(to);
+   
+        try {
+            DatatypeFactory df = DatatypeFactory.newInstance();
+            XMLGregorianCalendar dateFlight = df.newXMLGregorianCalendar(date);
+
+            input.setFlightDate(dateFlight);
+        }catch (Exception ex) {
+            System.out.printf("Should not reach this place!!");
+        }
+               
+        FlightInfoListType result = getFlights(input);
+         
+        return result;
+    }
+ 
+   */

@@ -98,7 +98,7 @@ public class HotelReservation {
         hotel.setPaymentGuarantee(false);
         hotels.getHotels().add(hotel);
         bookings.put(hotel.getBookingNumber(), new Booking(hotel));
-        
+  /*      
         System.out.print("-------------------------------------------------------------------------");
         System.out.print(creditCard.getExpirationMonth());
         System.out.print(creditCard.getExpirationYear());
@@ -107,7 +107,7 @@ public class HotelReservation {
 
         System.out.print("hashmap lenght" + bookings.size()); 
         System.out.print("__________________________________________________________");
-
+*/
         Booking booking = bookings.get(bookingNumber);
 
         
@@ -181,10 +181,10 @@ public class HotelReservation {
     }
 
     public boolean cancelHotel(int bookingNumber) throws CancelHotelFault {
-        
+  /*      
            System.out.print("hashmap lenght" + bookings.size()); 
         System.out.print("__________________________________________________________");
-
+*/
     
         if (!bookings.containsKey(bookingNumber)) {
             CancelHotelFaultType fault = new CancelHotelFaultType();
