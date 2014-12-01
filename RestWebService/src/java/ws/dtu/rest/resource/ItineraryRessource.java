@@ -51,7 +51,7 @@ public class ItineraryRessource {
       }
       if(result){
          Itinerary.getFligtList().put(number, "CONFIRMED");
-      } else{
+      } else{ 
           
          for (Map.Entry pairs : Itinerary.getFligtList().entrySet()) {
              pairs.setValue("CANCELLED");
@@ -160,7 +160,7 @@ public class ItineraryRessource {
         }
                
         FlightInfoListType result = getFlights(input);
-        
+         
         return result;
     }
    

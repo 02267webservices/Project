@@ -8,10 +8,8 @@ import dtu.ws.group8.lameduck.client.*;
 import hotelreservationservices.HotelType;
 import hotelreservationservices.HotelsType;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -25,7 +23,7 @@ import ws.dtu.rest.data.MyBean;
  * @author emilhein
  */
 
-public class TestFlightResource {
+public class TestItineraryResource {
     static final String ITINERARY_URI = "http://localhost:8080/RestWebService/webresources/itineraries";
     static final String FLIGHTS_URI = "http://localhost:8080/RestWebService/webresources/flights";
     static //final String HOTEL_URI = "http://localhost:8080/RestWebService/webresources/itinerary";
@@ -54,7 +52,7 @@ public class TestFlightResource {
                            flightsInfo.get(i).getFlightInfo().getStartAirport()+ "\n");
             }       
      }
-         */ 
+          */
      //***********************************************************
           
      //**************ADD TO ITINERARY**************************     
@@ -95,7 +93,7 @@ public class TestFlightResource {
          } 
          
      }  
-      
+     
      /*
      @Test //WORKS
      public void testP2(){
@@ -130,6 +128,7 @@ public class TestFlightResource {
          
               
      }
+     */
      /*
      @Test 
      public void testP2b(){
@@ -408,41 +407,6 @@ public class TestFlightResource {
     }  
 }
 
-
-
-/*
-         ///***********************CANCEL ITINERARY*****************
-         
-         cancelItinerary(client, bean);
-         
-         //*****************************GET ITINERARY***************
-         System.out.println();
-         MyBean ss = getItinerary(client);
-         fligts = ss.getFligtList();
-         hotels = ss.getHotelList();
-
-         for (Map.Entry pairs : fligts.entrySet()) {
-             System.out.println(pairs.getKey() + ":     " + pairs.getValue());
-         } 
-         for (Map.Entry pairs : hotels.entrySet()) {
-             System.out.println(pairs.getKey() + ":     " + pairs.getValue());
-         } 
-        */
-         
-       //  cancelFlight(client, "ABC1234");
-      /*  
-        HotelsType hotelsHolder = getHotels(client);
-          
-          
-          
-           if (!hotelsHolder.getHotels().isEmpty()){
-                for (int i = 0; i < hotelsHolder.getHotels().size(); i++) {
-                    System.out.println(hotelsHolder.getHotels().get(i).getName()+ "\n" +
-                           hotelsHolder.getHotels().get(i).getAddress()+ "\n" +
-                           hotelsHolder.getHotels().get(i).getBookingNumber());
-                }
-            }
-         */
          
      
 
