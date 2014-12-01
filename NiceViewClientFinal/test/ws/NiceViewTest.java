@@ -16,6 +16,8 @@ import ws.CreditCardType;
 /**
  *
  * @author gravr
+ * 
+ * This can be used to get the lists of hotels
  */
 public class NiceViewTest {
     
