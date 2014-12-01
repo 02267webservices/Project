@@ -283,6 +283,12 @@ public class TestItineraryResource {
   
   public void bookItinerary(Client client, MyBean itinerary){
    CreditCardInfoType cardInfo = getCardInfo("50408825","Thor-Jensen Claus","2009-05-05");
+   String param2 = "5";
+   String param3 = "9";
+   String param4 = "Thor-Jensen Claus";
+   String param5 = "50408825";
+   
+   
    Map<String, String> rari = itinerary.getFligtList();
    Map<String, String> hotels = itinerary.getHotelList();
    boolean booksuccess = true;
@@ -297,7 +303,7 @@ public class TestItineraryResource {
         if(booksuccess){
          for (Map.Entry pairs : hotels.entrySet()) {
 
-             bookHotel(client, pairs.getKey().toString());
+             bookHotel(client, pairs.getKey().toString(),param2,param3,param4,param5);
          }  
         } 
 
@@ -321,8 +327,8 @@ public class TestItineraryResource {
   //***Here comes the 6 main methods you can call on the two SOAP services *********/
   
   public List<FlightInfoType> getFlights(Client client, String from, String to, String date){
-     WebResource r = client.resource(ITINERARY_URI); 
-     FlightInfoListType res = r.path("flights").queryParam("from",from).queryParam("to",to).queryParam("date",date).get(new GenericType<FlightInfoListType>(){});
+     WebResource r = client.resource(FLIGHTS_URI); 
+     FlightInfoListType res = r.queryParam("from",from).queryParam("to",to).queryParam("date",date).get(new GenericType<FlightInfoListType>(){});
       
      List<FlightInfoType> flightsInfo = res.getFlightInformation();
 
@@ -351,15 +357,26 @@ public class TestItineraryResource {
     queryParams.add("name", param3);
     queryParams.add("expdate", param4);
 
+    
+    
+    
       WebResource r = client.resource(ITINERARY_URI);
       String ans = r.queryParams(queryParams).get(String.class);
      // System.out.println(ans);
       return ans;
   }
      
-  public String bookHotel(Client client, String number){
+  public String bookHotel(Client client, String number, String param2, String param3, String param4, String param5){
       WebResource r = client.resource(ITINERARY_URI);
-      String ans = r.path("hotel").queryParam("bookingnumber",number).put(String.class);
+     MultivaluedMap queryParams = new MultivaluedMapImpl();
+
+     queryParams.add("bookingnumber", number);
+    queryParams.add("expmonth", param2);
+    queryParams.add("expyear", param3);
+    queryParams.add("name", param4);
+        queryParams.add("number", param5);
+
+      String ans = r.path("hotel").queryParams(queryParams).put(String.class);
      System.out.println("The booking of hotel "+number+" was: "+ ans);
       return ans;
    }

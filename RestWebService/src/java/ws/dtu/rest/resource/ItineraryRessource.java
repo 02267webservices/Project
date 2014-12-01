@@ -64,12 +64,26 @@ public class ItineraryRessource {
    
      @Path("hotel")
    @PUT
-   public String BookHotel(@QueryParam("bookingnumber") String number) throws BookHotelFault{
+   public String BookHotel(@QueryParam("bookingnumber") String number,
+   @QueryParam("expmonth") String expmonth,
+   @QueryParam("expyear") String expyear,
+   @QueryParam("name") String name,
+   @QueryParam("number") String accnumber) throws BookHotelFault{
+        
+        int expmonths = Integer.parseInt(expmonth);
+        int expyears = Integer.parseInt(expyear);
+         
         ws.CreditCardType creditCard = new ws.CreditCardType();
-        creditCard.setExpirationMonth(5);
+       /* creditCard.setExpirationMonth(5);
         creditCard.setExpirationYear(9);
         creditCard.setName("Thor-Jensen Claus");
         creditCard.setNumber("50408825");
+        */
+        creditCard.setExpirationMonth(expmonths);
+        creditCard.setExpirationYear(expyears);
+        creditCard.setName(name);
+        creditCard.setNumber(accnumber);
+        
         int bookingnumber = Integer.parseInt(number);
         
         
@@ -141,9 +155,8 @@ public class ItineraryRessource {
    }
    
   
-  
- @Path("flights")  
- @GET
+/*  
+ @Path("flights")  @GET
  @Produces(MediaType.TEXT_XML) 
     public  FlightInfoListType getFlights(@QueryParam("from")String from, @QueryParam("to") String to,@QueryParam("date") String date) {
         GetFlightRequestType input = new GetFlightRequestType();
@@ -163,7 +176,8 @@ public class ItineraryRessource {
          
         return result;
     }
-   
+ 
+   */
  @Path("flight") 
  @DELETE
    public String CancelFlight(@QueryParam("bookingnumber") String number) {

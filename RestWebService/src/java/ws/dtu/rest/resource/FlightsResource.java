@@ -21,12 +21,12 @@ public class FlightsResource {
   
 
     @GET
-    @Produces(MediaType.TEXT_XML)
-    public  FlightInfoListType findFlights(@QueryParam("from")String from, @QueryParam("to") String to,@QueryParam("date") String date) {
+ @Produces(MediaType.TEXT_XML) 
+    public  FlightInfoListType getFlights(@QueryParam("from")String from, @QueryParam("to") String to,@QueryParam("date") String date) {
         GetFlightRequestType input = new GetFlightRequestType();
         input.setFlightStartAirport(from);
         input.setFlightDestinationAirport(to);
-
+   
         try {
             DatatypeFactory df = DatatypeFactory.newInstance();
             XMLGregorianCalendar dateFlight = df.newXMLGregorianCalendar(date);
@@ -37,7 +37,7 @@ public class FlightsResource {
         }
                
         FlightInfoListType result = getFlights(input);
-        
+         
         return result;
     }
 
