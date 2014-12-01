@@ -23,3 +23,8 @@
     b.
     c.
         1. Open "TestItineraryResource.java"
+
+
+
+To get the lists of flights or hotels you can run the test for individuel soapservices. This is due to the fact that when building 
+the rest project the data types are autocreated without the XmlRootElement ( name = 'xxxx') annotation.
