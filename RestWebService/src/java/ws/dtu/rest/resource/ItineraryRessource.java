@@ -124,25 +124,7 @@ public class ItineraryRessource {
    
   
    
-  @Path("hotels")
-  @GET
-  @Produces(MediaType.TEXT_XML)
-   public ws.HotelsType getHotels() {
-            DatatypeFactory df;
-            XMLGregorianCalendar arrivalDate = null;
-            XMLGregorianCalendar departureDate = null;
-            
-       try {
-           df = DatatypeFactory.newInstance();
-            arrivalDate = df.newXMLGregorianCalendar("2015-01-01");
-            departureDate = df.newXMLGregorianCalendar("2015-03-01");
-
-       } catch (DatatypeConfigurationException ex) {
-           Logger.getLogger(ItineraryRessource.class.getName()).log(Level.SEVERE, null, ex);
-       }
-        ws.HotelsType result = getHotels("some city 1",arrivalDate,departureDate);
-    return result;
-   }
+  
    
   
 
@@ -245,14 +227,6 @@ public class ItineraryRessource {
         return port.cancelFlight(input);
     }
 
- 
-   private static ws.HotelsType getHotels(java.lang.String city, javax.xml.datatype.XMLGregorianCalendar arrival, javax.xml.datatype.XMLGregorianCalendar departure) {
-        ws.HotelReservationService service = new ws.HotelReservationService();
-        ws.HotelReservationServices port = service.getHotelReservationServicesBindingPort();
-        return port.getHotels(city, arrival, departure);
-    }
-
-  
 
     private static boolean cancelHotel(int bookingNumber) throws CancelHotelFault {
         ws.HotelReservationService service = new ws.HotelReservationService();
@@ -270,26 +244,3 @@ public class ItineraryRessource {
   
  
 }
-/*  
- @Path("flights")  @GET
- @Produces(MediaType.TEXT_XML) 
-    public  FlightInfoListType getFlights(@QueryParam("from")String from, @QueryParam("to") String to,@QueryParam("date") String date) {
-        GetFlightRequestType input = new GetFlightRequestType();
-        input.setFlightStartAirport(from);
-        input.setFlightDestinationAirport(to);
-   
-        try {
-            DatatypeFactory df = DatatypeFactory.newInstance();
-            XMLGregorianCalendar dateFlight = df.newXMLGregorianCalendar(date);
-
-            input.setFlightDate(dateFlight);
-        }catch (Exception ex) {
-            System.out.printf("Should not reach this place!!");
-        }
-               
-        FlightInfoListType result = getFlights(input);
-         
-        return result;
-    }
- 
-   */
