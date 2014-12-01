@@ -27,19 +27,19 @@ public class TestItineraryResource {
     static final String ITINERARY_URI = "http://localhost:8080/RestWebService/webresources/itineraries";
     static final String FLIGHTS_URI = "http://localhost:8080/RestWebService/webresources/flights";
     static //final String HOTEL_URI = "http://localhost:8080/RestWebService/webresources/itinerary";
-    private ArrayList<String> itine = new ArrayList();
+    private ArrayList<String> itine = new ArrayList(); //NEEDS TO BE HERE
     
   
 
     
-/*
+
      @Test //WORKS
      public void testP1(){
          
      Client client = Client.create();
      
    
-     
+     /*
       //Get list of flights   *****************
    
      List<FlightInfoType> flightsInfo = getFlights(client, "Copenhagen", "Berlin", "2015-01-01");
@@ -54,7 +54,7 @@ public class TestItineraryResource {
                            flightsInfo.get(i).getFlightInfo().getStartAirport()+ "\n");
             }       
      }
-          
+          */
      //***********************************************************
           
      //**************ADD TO ITINERARY**************************     
@@ -101,7 +101,8 @@ public class TestItineraryResource {
      public void testP2(){
          
      Client client = Client.create();
-      List<FlightInfoType> flightsInfo = getFlights(client, "Copenhagen", "Berlin", "2015-01-01");
+     /* 
+     List<FlightInfoType> flightsInfo = getFlights(client, "Copenhagen", "Berlin", "2015-01-01");
          
           if (!flightsInfo.isEmpty()){
             for (int i = 0; i < flightsInfo.size(); i++) {
@@ -112,7 +113,7 @@ public class TestItineraryResource {
                            flightsInfo.get(i).getFlightInfo().getDestinationAirport() + "\nFrom: " +
                            flightsInfo.get(i).getFlightInfo().getStartAirport()+ "\n");
             }       
-     }
+     } */
      //****************Adding flight to itinerary********************
               addFlightsToItinerary(client,"ABC1234");
               String ans = cancelPlannig(client);
@@ -216,7 +217,7 @@ public class TestItineraryResource {
          
      }
      
-     */
+     
      @Test 
      public void testC2(){
          Client client = Client.create();
