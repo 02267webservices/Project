@@ -14,7 +14,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * Note that this class is only a stub and does not provide a correct implementation
  * of the business logic.
  */
-
+/**
+ *
+ * @author Emil Hein 
+ */
 @Path("flights")
 public class FlightsResource {
     

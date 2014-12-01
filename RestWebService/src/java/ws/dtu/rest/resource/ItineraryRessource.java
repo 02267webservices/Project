@@ -14,15 +14,18 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import ws.CancelHotelFault; 
-import ws.dtu.rest.data.MyBean;
-
-
+import ws.dtu.rest.data.MyBean; 
+ 
+/**
+ *
+ * @author Rasmus  
+ */
+ 
 @Path("itineraries")
-public class ItineraryRessource { 
+public class ItineraryRessource {  
     private static MyBean Itinerary = new MyBean();
     
    

@@ -22,7 +22,7 @@ import dtu.ws.group8.lameduck.types.FlightInfoType;
 
 /**
  *
- * @author gravr
+ * @author Christian gravr
  */
 @WebService(serviceName = "LameDuckService", portName = "LameDuckPort", endpointInterface = "dtu.ws.group8.lameduck.LameDuckWSDLPortType", targetNamespace = "http://lameduck.group8.ws.dtu", wsdlLocation = "WEB-INF/wsdl/LameDuckWebService/LameDuckWSDL.wsdl")
 public class LameDuckWebService {

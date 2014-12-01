@@ -2,7 +2,10 @@ package ws;
 
 import hotelreservationservices.CreditCardType;
 import hotelreservationservices.HotelType;
-
+/**
+ *
+ * @author Emil
+ */
 public class Booking {
     
     // New

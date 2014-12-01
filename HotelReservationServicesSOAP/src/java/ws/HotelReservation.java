@@ -16,6 +16,11 @@ import java.util.HashMap;
 import javax.jws.WebService;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+/**
+ *
+ * @author Khan noori
+ */
+
 @WebService(serviceName = "HotelReservationService", portName = "HotelReservationServicesBindingPort", endpointInterface = "hotelreservationservices.HotelReservationServices", targetNamespace = "http://HotelReservationServices", wsdlLocation = "WEB-INF/wsdl/HotelReservation/HotelReservation.wsdl")
 public class HotelReservation {
 
@@ -185,12 +190,43 @@ public class HotelReservation {
            System.out.print("hashmap lenght" + bookings.size()); 
         System.out.print("__________________________________________________________");
 */
-    
+     HotelsType hotels = new HotelsType();
+        hotels.setName("NiceView");
+        
+       
+        
+        HotelType hotel = new HotelType();
+        hotel.setName("Hotel that always succeed");
+        hotel.setAddress("Copenhagen");
+        hotel.setBookingNumber(next++);
+        hotel.setPriceForWholeStay(1000);
+        hotel.setPaymentGuarantee(false);
+        hotels.getHotels().add(hotel);
+        bookings.put(hotel.getBookingNumber(), new Booking(hotel));
+
+        hotel = new HotelType();
+        hotel.setName("Hotel that requires payment guarantee and can fail occasionally");
+        hotel.setAddress("Odense");
+        hotel.setBookingNumber(next++);
+        hotel.setPriceForWholeStay(2000);
+        hotel.setPaymentGuarantee(true);
+        hotels.getHotels().add(hotel);
+        bookings.put(hotel.getBookingNumber(), new Booking(hotel));
+
+        hotel = new HotelType();
+        hotel.setName("Hotel that always fails");
+        hotel.setAddress("Krakow");
+        hotel.setBookingNumber(next++);
+        hotel.setPriceForWholeStay(3000);
+        hotel.setPaymentGuarantee(false);
+        hotels.getHotels().add(hotel);
+        bookings.put(hotel.getBookingNumber(), new Booking(hotel));
+        
         if (!bookings.containsKey(bookingNumber)) {
             CancelHotelFaultType fault = new CancelHotelFaultType();
             fault.setBookingNumber(bookingNumber);
            // return true;
-            throw new CancelHotelFault("Booking was not found.", fault);	
+            throw new CancelHotelFault("Booking was not found.", fault); 	
         }
 
         Booking booking = bookings.get(bookingNumber);
