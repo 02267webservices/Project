@@ -42,13 +42,6 @@ public class FlightsResource {
     }
 
 
-    
-    
-    
-    
- 
-
-   
 
     private static FlightInfoListType getFlights(dtu.ws.group8.lameduck.types.GetFlightRequestType input) {
         dtu.ws.group8.lameduck.LameDuckService service = new dtu.ws.group8.lameduck.LameDuckService();

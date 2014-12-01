@@ -39,7 +39,7 @@ public class TestItineraryResource {
      Client client = Client.create();
 
       //Get list of flights   *****************
-   /*
+   
      List<FlightInfoType> flightsInfo = getFlights(client, "Copenhagen", "Berlin", "2015-01-01");
          
           if (!flightsInfo.isEmpty()){
@@ -52,7 +52,7 @@ public class TestItineraryResource {
                            flightsInfo.get(i).getFlightInfo().getStartAirport()+ "\n");
             }       
      }
-          */
+          
      //***********************************************************
           
      //**************ADD TO ITINERARY**************************     
