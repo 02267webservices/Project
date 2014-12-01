@@ -1,6 +1,8 @@
 1. Deploy Web Services
     a. webroot
         1. Deploy and visit http://localhost:8080 in your preferred browser
+        
+2. REST-Service Test Setup Manual
     a. HotelReservationServicesSOAP
         1. Refresh BankService, Web Service Reference, leave checkbox checked and press "Yes"
         2. Deploy but cancel the alert (errors disappears thereafter)
@@ -11,20 +13,21 @@
         3. Deploy
     c. RestWebService
         1. Deploy
-
-2. Run the RestClient Test "TestItineraryResource.java"
-
-
-// NO!
-9. Run UnitTests
-    a. LameDuckClient3
-        1. Refresh Web Service Reference
-        2. Open Test Packages/dtu.ws.group8.lameduck.client/LameDuckTest.java
-    b.
-    c.
-        1. Open "TestItineraryResource.java"
-
-
-
+    d. Run the RestClient Test "TestItineraryResource.java"
+    
+3. BPEL-Service Test Setup Manual 
+    a. LameDuckService (in LameDuckGitHub folder)
+        1. Refresh BankService, Web Service Reference, leave checkbox checked and press "Yes"
+        2. Refresh the Web Service itself (LameDuckService) uncheck both and press "Yes"
+        3. Deploy
+    b. BpelModule (in BPELTESTING folder)
+        1. Clean and Build
+    c. TestingApp1 (in BPELTESTING folder)
+        1. Clean and Build
+    d. TestingAgain
+        1. Refresh TestingWSDLPort under Web Service References
+        2. Run testfile JUnitTestTesting.java
+    NB. Sorry about the BPEL naming convention :(
+    
 To get the lists of flights or hotels you can run the test for individuel soapservices. This is due to the fact that when building 
 the rest project the data types are autocreated without the XmlRootElement ( name = 'xxxx') annotation.
