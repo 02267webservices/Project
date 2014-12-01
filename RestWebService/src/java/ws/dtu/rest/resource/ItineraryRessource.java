@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import ws.CancelHotelFault;
+import ws.CancelHotelFault; 
 import ws.dtu.rest.data.MyBean;
 
 

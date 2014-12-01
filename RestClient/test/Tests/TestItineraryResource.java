@@ -70,9 +70,13 @@ public class TestItineraryResource {
 
          for (Map.Entry pairs : fligts.entrySet()) {
              System.out.println(pairs.getKey() + ":     " + pairs.getValue());
+                     assertEquals("UNCONFIRMED",pairs.getValue());
+
          } 
          for (Map.Entry pairs : hotels.entrySet()) {
              System.out.println(pairs.getKey() + ":           " + pairs.getValue());
+                     assertEquals("UNCONFIRMED",pairs.getValue());
+
          } 
          
          //**********************BOOK ITINERARY****************
@@ -88,13 +92,17 @@ public class TestItineraryResource {
 
          for (Map.Entry pairs : fligts.entrySet()) {
              System.out.println(pairs.getKey() + ":     " + pairs.getValue());
+             assertEquals("CONFIRMED",pairs.getValue());
+
          } 
          for (Map.Entry pairs : hotels.entrySet()) {
              System.out.println(pairs.getKey() + ":           " + pairs.getValue());
+             assertEquals("CONFIRMED",pairs.getValue());
+
          } 
          
      }  
-     
+    
    
      @Test //WORKS
      public void testP2(){
@@ -112,7 +120,8 @@ public class TestItineraryResource {
                            flightsInfo.get(i).getFlightInfo().getDestinationAirport() + "\nFrom: " +
                            flightsInfo.get(i).getFlightInfo().getStartAirport()+ "\n");
             }       
-     } */
+     } 
+          */
      //****************Adding flight to itinerary********************
               addFlightsToItinerary(client,"ABC1234");
               String ans = cancelPlannig(client);
@@ -127,10 +136,13 @@ public class TestItineraryResource {
          for (Map.Entry pairs : hotels.entrySet()) {
              System.out.println(pairs.getKey() + ":     " + pairs.getValue());
          } 
-         
+         assertEquals(0,fligts.size());
+         assertEquals(0,hotels.size());
+
               
      }
-    
+  
+ 
      @Test 
      public void testP2b(){
          Client client = Client.create();
@@ -171,19 +183,18 @@ public class TestItineraryResource {
           
           
      }
-    
-     
+  
      @Test //WORKS
      public void testC1(){
          Client client = Client.create();
          
-         
+         //Adding flights to itinerary
          addFlightsToItinerary(client,"ABC1234");
          addFlightsToItinerary(client,"ABC4321");
          addhotelsToItinerary(client,"2");
          
         
-         
+         ///booking itinerary
          MyBean bean = getItinerary(client);        
          bookItinerary(client, bean);
 
@@ -194,11 +205,15 @@ public class TestItineraryResource {
 
         for (Map.Entry pairs : fligts.entrySet()) {
              System.out.println(pairs.getKey() + ":     " + pairs.getValue());
-         } 
+             assertEquals("CONFIRMED",pairs.getValue());
+        } 
          for (Map.Entry pairs : hotels.entrySet()) {
              System.out.println(pairs.getKey() + ":           " + pairs.getValue());
+             assertEquals("CONFIRMED",pairs.getValue());
+
          } 
          
+         //CANCELLING THE ITINERARY
          cancelItinerary(client, bean);
          
          System.out.println();
@@ -208,14 +223,17 @@ public class TestItineraryResource {
 
         for (Map.Entry pairs : fligts.entrySet()) {
              System.out.println(pairs.getKey() + ":     " + pairs.getValue());
-         } 
+             assertEquals("CANCELLED",pairs.getValue());
+
+        } 
          for (Map.Entry pairs : hotels.entrySet()) {
              System.out.println(pairs.getKey() + ":           " + pairs.getValue());
+             assertEquals("CANCELLED",pairs.getValue());
+
          } 
          
          
      }
-     
      
      @Test 
      public void testC2(){
@@ -259,6 +277,11 @@ public class TestItineraryResource {
          } 
          
      }
+     
+   
+     
+     
+     
      
     
      
