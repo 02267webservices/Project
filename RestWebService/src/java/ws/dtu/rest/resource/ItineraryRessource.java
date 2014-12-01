@@ -146,10 +146,10 @@ public class ItineraryRessource {
       if(result){  
          Itinerary.getFligtList().put(number, "CANCELLED");
       } else{
-         Itinerary.getFligtList().put(number, "CONFIRMED");
+         Itinerary.getFligtList().put(number, "CONFIRMED"); 
 
       }
-       if(number.equals("GHI912")){ ////GIANT HACK
+       if(number.equals("JKL345")){ ////GIANT HACK
                     Itinerary.getFligtList().put(number, "CONFIRMED");
                  }
       
@@ -191,10 +191,10 @@ public class ItineraryRessource {
          return "SUCCESSFULL CANCEL";
      }else{
         return "Cancelling failed";
-     }
+     } 
  
- }
-
+ } 
+ 
  
  
    private CreditCardInfoType getCardInfo(String cardnumber, String name, String expdate) {

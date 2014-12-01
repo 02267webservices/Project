@@ -27,7 +27,7 @@ public class TestItineraryResource {
     static final String FLIGHTS_URI = "http://localhost:8080/RestWebService/webresources/flights";
    // static final String HOTELs_URI = "http://localhost:8080/RestWebService/webresources/hotels";
     private ArrayList<String> itine = new ArrayList(); //NEEDS TO BE HERE
-    
+     
   
 
     
@@ -40,7 +40,7 @@ public class TestItineraryResource {
    
      
       //Get list of flights   *****************
-   
+   /*
      List<FlightInfoType> flightsInfo = getFlights(client, "Copenhagen", "Berlin", "2015-01-01");
          
           if (!flightsInfo.isEmpty()){
@@ -53,7 +53,7 @@ public class TestItineraryResource {
                            flightsInfo.get(i).getFlightInfo().getStartAirport()+ "\n");
             }       
      }
-          
+          */
      //***********************************************************
           
      //**************ADD TO ITINERARY**************************     
@@ -64,7 +64,11 @@ public class TestItineraryResource {
          addhotelsToItinerary(client, "5");
       //************************GET ITINERARY************************
          MyBean bean = getItinerary(client);
-      
+/*
+         System.out.println("______________________________________----");
+         System.out.println(bean.getFligtList().size());
+         System.out.println(bean.getHotelList().size());
+*/
          Map<String, String> fligts = bean.getFligtList();
          Map<String, String> hotels = bean.getHotelList();
 
@@ -101,13 +105,15 @@ public class TestItineraryResource {
 
          } 
          
+         
      }  
-    
    
-     @Test //WORKS
+   
+     @Test  //WORKS
      public void testP2(){
          
      Client client = Client.create();
+     
      /* 
      List<FlightInfoType> flightsInfo = getFlights(client, "Copenhagen", "Berlin", "2015-01-01");
          
@@ -121,7 +127,7 @@ public class TestItineraryResource {
                            flightsInfo.get(i).getFlightInfo().getStartAirport()+ "\n");
             }       
      } 
-          */
+      */    
      //****************Adding flight to itinerary********************
               addFlightsToItinerary(client,"ABC1234");
               String ans = cancelPlannig(client);
@@ -143,12 +149,12 @@ public class TestItineraryResource {
      }
   
  
-     @Test 
+     @Test //WORKS
      public void testP2b(){
          Client client = Client.create();
          addFlightsToItinerary(client,"ABC1234");
          addFlightsToItinerary(client,"ABC4321");
-         addFlightsToItinerary(client,"ABC4321_ZZXX");
+         addFlightsToItinerary(client,"ABC4321_ZZXX"); //is not a valid flightnumber
 
          addhotelsToItinerary(client,"2");
 
@@ -235,13 +241,13 @@ public class TestItineraryResource {
          
      }
      
-     @Test 
+     @Test //WORKS
      public void testC2(){
          Client client = Client.create();
 
 
          addFlightsToItinerary(client,"ABC1234");
-         addFlightsToItinerary(client,"GHI912");
+         addFlightsToItinerary(client,"JKL345");
 
          addhotelsToItinerary(client,"2");
 
