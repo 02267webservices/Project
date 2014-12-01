@@ -163,7 +163,7 @@ public class HotelReservation {
 
             booking.book(creditCard);
             return true;
-
+ 
         }
 
         if (booking.getHotel().getName().equalsIgnoreCase("Hotel that always fails")) {

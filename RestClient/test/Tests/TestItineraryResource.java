@@ -25,7 +25,7 @@ import ws.dtu.rest.data.MyBean;
 public class TestItineraryResource {
     static final String ITINERARY_URI = "http://localhost:8080/RestWebService/webresources/itineraries";
     static final String FLIGHTS_URI = "http://localhost:8080/RestWebService/webresources/flights";
-    static //final String HOTEL_URI = "http://localhost:8080/RestWebService/webresources/itinerary";
+   // static final String HOTELs_URI = "http://localhost:8080/RestWebService/webresources/hotels";
     private ArrayList<String> itine = new ArrayList(); //NEEDS TO BE HERE
     
   
@@ -38,7 +38,7 @@ public class TestItineraryResource {
      Client client = Client.create();
      
    
-     /*
+     
       //Get list of flights   *****************
    
      List<FlightInfoType> flightsInfo = getFlights(client, "Copenhagen", "Berlin", "2015-01-01");
@@ -53,7 +53,7 @@ public class TestItineraryResource {
                            flightsInfo.get(i).getFlightInfo().getStartAirport()+ "\n");
             }       
      }
-          */
+          
      //***********************************************************
           
      //**************ADD TO ITINERARY**************************     
@@ -282,7 +282,7 @@ public class TestItineraryResource {
      
      
      
-     
+   
     
      
      
