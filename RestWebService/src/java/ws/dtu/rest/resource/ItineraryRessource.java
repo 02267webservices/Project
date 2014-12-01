@@ -2,7 +2,6 @@ package ws.dtu.rest.resource;
 import dtu.ws.group8.lameduck.BookFlightFault;
 import dtu.ws.group8.lameduck.CancelFlightFault;
 import dtu.ws.group8.lameduck.types.CreditCardInfoType;
-import dtu.ws.group8.lameduck.types.FlightInfoListType;
 import hotelreservationservices.BookHotelFault;
 import java.util.Map;
 
@@ -19,7 +18,6 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import ws.CancelHotelFault;
-import ws.CreditCardType;
 import ws.dtu.rest.data.MyBean;
 
 

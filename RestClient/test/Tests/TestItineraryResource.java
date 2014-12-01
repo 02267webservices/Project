@@ -5,7 +5,6 @@ import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 import dtu.ws.group8.lameduck.client.*;
-import hotelreservationservices.HotelType;
 import hotelreservationservices.HotelsType;
 import java.util.ArrayList;
 import java.util.List;
