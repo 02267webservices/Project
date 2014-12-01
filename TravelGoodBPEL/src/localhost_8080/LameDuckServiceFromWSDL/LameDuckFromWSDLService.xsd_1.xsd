@@ -32,17 +32,17 @@
         <xsd:sequence>
             <xsd:element name="flightBookingNumber" type="xsd:string"/>
             <xsd:element name="flightPrice" type="xsd:double"/>
-            <xsd:element name="creditCardInfo" type="tns:creditCardInfoType"/>
+            <xsd:element name="creditCardInfo" type="tns:creditCardInfoTypeLD"/>
         </xsd:sequence>
     </xsd:complexType>
     
     <xsd:complexType name="bookFlightRequestType">
         <xsd:sequence>
             <xsd:element name="flightBookingNumber" type="xsd:string"/>
-            <xsd:element name="creditCardInfo" type="tns:creditCardInfoType"/>
+            <xsd:element name="creditCardInfo" type="tns:creditCardInfoTypeLD"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="creditCardInfoType">
+    <xsd:complexType name="creditCardInfoTypeLD">
         <xsd:sequence>
             <xsd:element name="name" type="xsd:string"/>
             <xsd:element name="cardNumber" type="xsd:string"/>

@@ -11,10 +11,10 @@
     xmlns:sxat="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Attachment"
     xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling" xmlns:ns0="dtu.ws.group8.travelgood" xmlns:sxxf="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/XPathFunctions">
     <import namespace="dtu.ws.group8.travelgood" location="TravelGoodWSDL.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
-    <import namespace="http://enterprise.netbeans.org/bpel/LameDuckServiceWrapper" location="LameDuckServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
-    <import namespace="http://lameduck.group8.ws.dtu" location="http://localhost:8080/LameDuckService/LameDuckService?wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/LameDuckFromWSDLServiceWrapper" location="LameDuckFromWSDLServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://lameduck.group8.ws.dtu" location="http://localhost:8080/LameDuckServiceFromWSDL/LameDuckFromWSDLService?wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
     <partnerLinks>
-        <partnerLink name="LameDuckPartnerLink" xmlns:tns="http://enterprise.netbeans.org/bpel/LameDuckServiceWrapper" partnerLinkType="tns:LameDuckWSDLLinkType" partnerRole="LameDuckWSDLRole"/>
+        <partnerLink name="LameDuckPartnerLink2" xmlns:tns="http://enterprise.netbeans.org/bpel/LameDuckFromWSDLServiceWrapper" partnerLinkType="tns:LameDuckServiceFromWSDLLinkType" partnerRole="LameDuckServiceFromWSDLRole"/>
         <partnerLink name="PartnerLink1" xmlns:tns="dtu.ws.group8.travelgood" partnerLinkType="tns:TravelGoodWSDL" myRole="TravelGoodWSDLPortTypeRole"/>
     </partnerLinks>
     <variables>
@@ -40,7 +40,7 @@
                 <to variable="processTerminated"/>
             </copy>
             <copy>
-                <from>concat('Itinerary created with itinearay ID: ', $CreateItineraryOperationIn.itineraryId)</from>
+                <from>concat('Itinerary created with itinearay ID: ', stub())</from>
                 <to variable="CreateItineraryOperationOut" part="status"/>
             </copy>
             <copy>
